@@ -5,7 +5,7 @@
   >
     <div class="bg-white p-6 rounded-xl w-96 shadow-xl">
       <slot />
-      <button @click="$emit('close')" class="mt-3 text-gray-600 text-sm">
+      <button @click="$emit('close')" class="mt-3 text-gray-600 text-sm w-full">
         Close
       </button>
     </div>

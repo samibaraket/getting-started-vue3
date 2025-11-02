@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { userService } from "@/api/userService";
 import type { User } from "@/types/User";
 
-export const useUserStore = defineStore("user", {
+export const userWorkerService = defineStore("user", {
   state: () => ({
     users: [] as User[],
     loading: false,

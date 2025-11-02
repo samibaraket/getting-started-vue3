@@ -21,6 +21,7 @@
 <script setup lang="ts">
 import { useForm } from "vee-validate";
 import * as yup from "yup";
+// types
 import type { User } from "@/types/User";
 
 const props = defineProps<{ initialData?: Partial<User>; isEdit?: boolean }>();

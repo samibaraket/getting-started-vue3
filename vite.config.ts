@@ -1,15 +1,18 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
-import path from "path"; // <-- THIS WAS MISSING
+import path from "path";
+import tailwindcss from "@tailwindcss/postcss";
 
 export default defineConfig({
   plugins: [vue()],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"), // allows @ to point to src
+  css: {
+    postcss: {
+      plugins: [tailwindcss()],
     },
   },
-  server: {
-    port: 5173, // optional
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
   },
 });

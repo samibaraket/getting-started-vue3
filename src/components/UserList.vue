@@ -4,7 +4,7 @@
 
     <table class="w-full border">
       <thead>
-        <tr class="bg-gray-100 text-left">
+        <tr class="bg-gray-100 text-center">
           <th class="p-2">ID</th>
           <th class="p-2">Name</th>
           <th class="p-2">Email</th>
@@ -43,12 +43,15 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { storeToRefs } from "pinia";
-import { useUserStore } from "@/store/userStore";
+// services
+import { userWorkerService } from "@/store/userWorkerService";
+// components
 import Modal from "@/components/Modal.vue";
 import UserForm from "@/components/UserForm.vue";
+// type
 import type { User } from "@/types/User";
 
-const store = useUserStore();
+const store = userWorkerService();
 const { users } = storeToRefs(store);
 
 const showCreateModal = ref(false);
