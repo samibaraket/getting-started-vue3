@@ -2,14 +2,14 @@
   <form @submit.prevent="onSubmit" class="space-y-3">
     <div>
       <label class="block text-sm font-medium">Name</label>
-      <input v-model="values.name" type="text" class="input" />
-      <span class="text-red-500 text-xs">{{ errors.name }}</span>
+      <input v-model="name" type="text" class="input" />
+      <span class="text-red-500 text-xs">{{ nameError }}</span>
     </div>
 
     <div>
       <label class="block text-sm font-medium">Email</label>
-      <input v-model="values.email" type="email" class="input" />
-      <span class="text-red-500 text-xs">{{ errors.email }}</span>
+      <input v-model="email" type="email" class="input" />
+      <span class="text-red-500 text-xs">{{ emailError }}</span>
     </div>
 
     <button type="submit" class="btn w-full">
@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { useForm } from "vee-validate";
+import { useForm, useField } from "vee-validate";
 import * as yup from "yup";
 // types
 import type { User } from "@/types/User";
@@ -32,12 +32,19 @@ const schema = yup.object({
   email: yup.string().email().required(),
 });
 
-const { handleSubmit, errors, values } = useForm<Omit<User, "id">>({
+const { handleSubmit } = useForm<Omit<User, "id">>({
   validationSchema: schema,
   initialValues: props.initialData ?? { name: "", email: "" },
 });
 
-const onSubmit = handleSubmit((values) => emit("submit", values));
+
+const { value: name, errorMessage: nameError } = useField("name");
+const { value: email, errorMessage: emailError } = useField("email");
+
+const onSubmit = handleSubmit((formValues) => {
+  console.log("SUBMITTED VALUES = ", formValues);
+  emit("submit", formValues);
+});
 </script>
 
 <style scoped>

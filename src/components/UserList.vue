@@ -1,7 +1,7 @@
 <template>
   <div>
     <button class="btn mb-3" @click="showCreateModal = true">+ Add User</button>
-
+{{ users.length }}
     <table class="w-full border">
       <thead>
         <tr class="bg-gray-100 text-center">
@@ -66,6 +66,7 @@ function closeModal() {
 }
 
 async function handleCreate(data: Omit<User, "id">) {
+  console.log("Received from child:", data);
   await store.addUser(data);
   closeModal();
 }
@@ -76,6 +77,7 @@ function editUser(user: User) {
 }
 
 async function handleEdit(data: Omit<User, "id">) {
+  console.log("Edit user data : ",data)
   if (selectedUser.value) {
     await store.updateUser(selectedUser.value.id, data);
     closeModal();
