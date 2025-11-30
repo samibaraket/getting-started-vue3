@@ -1,7 +1,7 @@
 <template>
   <div>
     <button class="btn mb-3" @click="showCreateModal = true">+ Add User</button>
-{{ users.length }}
+
     <table class="w-full border">
       <thead>
         <tr class="bg-gray-100 text-center">
@@ -47,7 +47,7 @@ import { storeToRefs } from "pinia";
 import { userWorkerService } from "@/store/userWorkerService";
 // components
 import Modal from "@/components/Modal.vue";
-import UserForm from "@/components/UserForm.vue";
+import UserForm from "@/components/user/UserForm.vue";
 // type
 import type { User } from "@/types/User";
 
@@ -77,7 +77,6 @@ function editUser(user: User) {
 }
 
 async function handleEdit(data: Omit<User, "id">) {
-  console.log("Edit user data : ",data)
   if (selectedUser.value) {
     await store.updateUser(selectedUser.value.id, data);
     closeModal();

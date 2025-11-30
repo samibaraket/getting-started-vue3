@@ -21,6 +21,15 @@
             Users
           </RouterLink>
         </li>
+        <li>
+          <RouterLink
+            to="/companies"
+            class="text-gray-700 hover:text-blue-600"
+            active-class="text-blue-600 font-medium"
+          >
+            Companies
+          </RouterLink>
+        </li>
       </ul>
     </nav>
   </header>
@@ -28,7 +37,6 @@
 
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
-
 </script>
 
 <style scoped>

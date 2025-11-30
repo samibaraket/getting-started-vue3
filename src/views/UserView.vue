@@ -6,6 +6,6 @@
 </template>
 
 <script setup lang="ts">
-import BaseLayout from "@/components/BaseLayout.vue";
-import UserList from "@/components/UserList.vue";
+import BaseLayout from "@/components/layout/BaseLayout.vue";
+import UserList from "@/components/user/UserList.vue";
 </script>
